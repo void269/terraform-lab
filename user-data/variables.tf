@@ -15,3 +15,9 @@ variable "aws_az" {
   type = string
   default = "us-east-1a"
 }
+
+variable "env" {
+  description = "Environment"
+  type = string
+  default = "lab"
+}
