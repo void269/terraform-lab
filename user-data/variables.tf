@@ -21,3 +21,9 @@ variable "env" {
   type = string
   default = "lab"
 }
+
+variable "ami_image_id" {
+  description = "AMI ID for AWS Linux EC2 Instance"
+  type = string
+  default = "ami-05cf1e9f73fbad2e2"
+}
