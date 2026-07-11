@@ -1,4 +1,4 @@
-variable "server_port" {
+variable "http_port" {
   description = "SG Inbound port number"
   type = number
   default = 80
@@ -26,4 +26,10 @@ variable "ami_image_id" {
   description = "AMI ID for AWS Linux EC2 Instance"
   type = string
   default = "ami-05cf1e9f73fbad2e2"
+}
+
+variable "ec2_instance_type" {
+  description = "EC2 Instance Type"
+  type = string
+  default = "t2.micro"
 }
