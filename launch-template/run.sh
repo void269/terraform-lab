@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-terraform apply -var "http_port=80" -auto-approve
+terraform apply "plan.out" -auto-approve
 
 public_ip=$(terraform output -raw public_ip)
 
