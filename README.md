@@ -1,9 +1,9 @@
-# terraform-lab
+# Terraform Lab
 
-This is a landing zone for Terraform Lab work I am writing.
-Each section has it's own subfolder.
-The sections have Bash scripts to interact with the module.
-| File Name | Description |
-| 'build.sh' | This will initialize the Terraform Module then create the plan and output it to 'plan.out'.  If the 'plan.out' exists there is no need to run this script. |
-| 'run.sh' | This will apply the plan which will stand up all resources outlined in the 'main.ft' file. |
-| 'destroy.sh' | This will destroy all resources associated with the plan that was deployed. |
+This repository serves as a landing zone for my Terraform lab work. Each lab is organized into its own subfolder. Every lab includes a set of Bash scripts that simplify working with the Terraform module.
+
+| File Name    | Description |
+|--------------|-------------|
+| `build.sh`   | Initializes the Terraform module, generates an execution plan, and saves it as `plan.out`. If `plan.out` already exists and no configuration changes have been made, there is no need to run this script again. |
+| `run.sh`     | Applies the execution plan stored in `plan.out` and provisions all resources defined in `main.tf`. |
+| `destroy.sh` | Destroys all resources that were provisioned by the Terraform deployment. |
