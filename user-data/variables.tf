@@ -25,7 +25,7 @@ variable "env" {
 variable "ami_image_id" {
   description = "AMI ID for AWS Linux EC2 Instance"
   type = string
-  default = "ami-05cf1e9f73fbad2e2"
+  default = "ami-01edba92f9036f76e"
 }
 
 variable "ec2_instance_type" {
