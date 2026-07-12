@@ -1,0 +1,17 @@
+---
+- name: Install multiple packages on all hosts
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install packages using dnf
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present #absent is to remove
+      loop:
+        - git
+        - wget
+        - curl-minimal
+        - htop
+      loop_control:
+        label: "Installing {{ item }}"  # Changes display in playbook output

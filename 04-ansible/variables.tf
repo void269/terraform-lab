@@ -40,8 +40,25 @@ variable "secret_key" {
   sensitive = true
 }
 
-// VPC Vars
+variable "ssh_key" {
+  description = "SSH Key to access EC2 instances"
+  type = string
+  default = "Demo-key-01"
+}
 
+variable "ssh_key_path" {
+  description = "Path to SSH key"
+  type        = string
+  default     = "/home/ec2-user/.ssh/Demo-key-01.pem"
+}
+
+variable "username" {
+  description = "Username for SSH access to EC2 instances"
+  type        = string
+  default     = "ec2-user"
+}
+
+// VPC Vars
 variable "cidr_block" {
   description = "VPC CIDR Block"
   type = string
