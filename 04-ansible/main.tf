@@ -21,7 +21,7 @@ resource "aws_subnet" "public" {
   count = length(var.public_subnet_cidrs)
   vpc_id  = aws_vpc.vpc01.id
   cidr_block = element(var.public_subnet_cidrs, count.index)
-  availability_zone = element(var.aws-az-list, count.index)
+  availability_zone = element(var.aws_az_list, count.index)
   map_public_ip_on_launch = true
 
   tags = {
@@ -34,7 +34,7 @@ resource "aws_subnet" "private" {
   count = length(var.private_subnet_cidrs)
   vpc_id  = aws_vpc.vpc01.id
   cidr_block = element(var.private_subnet_cidrs, count.index)
-  availability_zone  = element(var.aws-az-list, count.index)
+  availability_zone  = element(var.aws_az_list, count.index)
   map_public_ip_on_launch = false
 
   tags = {
@@ -103,7 +103,7 @@ resource "aws_security_group" "net-traffic" {
 resource "aws_instance" "ec2" {
   ami = var.ami_image_id
   count = 1
-  availability_zone = element(var.aws-az-list, 0)
+  availability_zone = element(var.aws_az_list, 0)
   instance_type = var.ec2_instance_type
   key_name = var.ssh_key
   vpc_security_group_ids = [aws_security_group.net-traffic.id]

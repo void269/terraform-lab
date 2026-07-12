@@ -27,7 +27,7 @@ variable "ec2_instance_type" {
   type = string
   default = "t2.micro"
 }
-
+/*
 variable "access_key" {
   description = "IAM access key"
   type = string
@@ -39,7 +39,7 @@ variable "secret_key" {
   type = string
   sensitive = true
 }
-
+*/
 variable "ssh_key" {
   description = "SSH Key to access EC2 instances"
   type = string
@@ -77,7 +77,7 @@ variable "private_subnet_cidrs" {
   default = ["10.0.10.0/24", "10.0.11.0/24", "10.0.12.0/24"]
 }
 
-variable "aws-az-list" {
+variable "aws_az_list" {
   description = "List of Availability Zones"
   type = list(string)
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
