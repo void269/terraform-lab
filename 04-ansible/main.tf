@@ -58,14 +58,14 @@ resource "aws_route_table" "public" {
   }
 }
 
-resource "aws_route_table_association" "aws-rt" {
+resource "aws_route_table_association" "aws_rt" {
   count = length(var.public_subnet_cidrs)
   subnet_id  = element(aws_subnet.public[*].id, count.index)
   route_table_id = aws_route_table.public.id
 }
 
-resource "aws_security_group" "net-traffic" {
-  name = "net-traffic-sg"
+resource "aws_security_group" "net_traffic" {
+  name = "net_traffic_sg"
   description = "Allow inbound/outbound traffic"
   vpc_id = aws_vpc.vpc01.id
 
@@ -94,7 +94,7 @@ resource "aws_security_group" "net-traffic" {
   }
 
   tags = {
-    Name = "allow-network-traffic"
+    Name = "allow_network_traffic"
     ENV = var.env
   }
 }
@@ -106,7 +106,7 @@ resource "aws_instance" "ec2" {
   availability_zone = element(var.aws_az_list, 0)
   instance_type = var.ec2_instance_type
   key_name = var.ssh_key
-  vpc_security_group_ids = [aws_security_group.net-traffic.id]
+  vpc_security_group_ids = [aws_security_group.net_traffic.id]
 
   tags = {
     ENV = var.env
