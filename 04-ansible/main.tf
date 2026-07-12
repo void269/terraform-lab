@@ -107,6 +107,7 @@ resource "aws_instance" "ec2" {
   instance_type = var.ec2_instance_type
   key_name = var.ssh_key
   vpc_security_group_ids = [aws_security_group.net_traffic.id]
+  subnet_id = aws_subnet.public[0].id
 
   tags = {
     ENV = var.env
@@ -116,7 +117,7 @@ resource "aws_instance" "ec2" {
     command = <<EOT
       echo "Waiting 60s for ec2 instance to be ready to ssh into ..."
       sleep 60
-      ANSIBLE_HOST_KEY_CHECKING=False \   # Needed in 
+      ANSIBLE_HOST_KEY_CHECKING=False \
       ansible-playbook \
         -i ${self.public_ip}, \
         --private-key ${var.ssh_key_path} \
