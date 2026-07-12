@@ -108,8 +108,10 @@ resource "aws_instance" "ec2" {
   key_name = var.ssh_key
   vpc_security_group_ids = [aws_security_group.net_traffic.id]
   subnet_id = aws_subnet.public[0].id
+  associate_public_ip_address = true
 
   tags = {
+    Name = "Terraform-Ansible-EC2"
     ENV = var.env
   }
 
