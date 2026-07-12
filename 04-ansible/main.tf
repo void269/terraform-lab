@@ -116,9 +116,16 @@ resource "aws_instance" "ec2" {
   }
 
   provisioner "local-exec" {
+    interpreter = ["bash", "-c"]
     command = <<EOT
       echo "Waiting 60s for ec2 instance to be ready to ssh into ..."
       sleep 60
+
+      echo "Public IP: ${self.public_ip}"
+      echo "Key: ${var.ssh_key_path}"
+      echo "User: ${var.username}"
+      which ansible-playbook
+
       ANSIBLE_HOST_KEY_CHECKING=False \
       ansible-playbook \
         -i ${self.public_ip}, \
