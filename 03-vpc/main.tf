@@ -17,28 +17,28 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_subnet" "public" {
-  count = length(var.public_subnet_cidrs)
-  vpc_id = aws_vpc.vpc01.id
-  cidr_block = element(var.public_subnet_cidrs, count.index)
-  availability_zone = element(var.aws-az-list, count.index)
+  count                   = length(var.public_subnet_cidrs)
+  vpc_id                  = aws_vpc.vpc01.id
+  cidr_block              = element(var.public_subnet_cidrs, count.index)
+  availability_zone       = element(var.aws-az-list, count.index)
   map_public_ip_on_launch = true
 
   tags = {
     Name = "Public Subnet ${count.index + 1}"
-    ENV = var.env
+    ENV  = var.env
   }
 }
 
 resource "aws_subnet" "private" {
-  count = length(var.private_subnet_cidrs)
-  vpc_id = aws_vpc.vpc01.id
-  cidr_block = element(var.private_subnet_cidrs, count.index)
-  availability_zone = element(var.aws-az-list, count.index)
+  count                   = length(var.private_subnet_cidrs)
+  vpc_id                  = aws_vpc.vpc01.id
+  cidr_block              = element(var.private_subnet_cidrs, count.index)
+  availability_zone       = element(var.aws-az-list, count.index)
   map_public_ip_on_launch = false
 
   tags = {
     Name = "Private Subnet ${count.index + 1}"
-    ENV = var.env
+    ENV  = var.env
   }
 
 }
@@ -53,12 +53,12 @@ resource "aws_route_table" "public" {
 
   tags = {
     Name = "Public Route Table"
-    ENV = var.env
+    ENV  = var.env
   }
 }
 
 resource "aws_route_table_association" "aws-rt" {
-  count = length(var.public_subnet_cidrs)
-  subnet_id = element(aws_subnet.public[*].id, count.index)
+  count          = length(var.public_subnet_cidrs)
+  subnet_id      = element(aws_subnet.public[*].id, count.index)
   route_table_id = aws_route_table.public.id
 }
