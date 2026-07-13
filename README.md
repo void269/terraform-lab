@@ -1,6 +1,6 @@
 # Terraform Lab
 
-This repository serves as a landing zone for my Terraform lab work. Each lab is organized into its own subfolder. Every lab includes a set of Bash scripts that simplify working with the Terraform module.
+This repository serves as a landing zone for my Terraform lab project work. Each project is organized into its own subfolder. Every project includes a set of Bash scripts that simplify working with the Terraform module.
 
 | File Name    | Description |
 |--------------|-------------|
